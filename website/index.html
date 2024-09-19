@@ -1,0 +1,243 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>My Website</title>
+    <link rel="stylesheet" href="styles.css">
+    <script src="scripts.js" defer></script> <!-- 引入 JavaScript 文件 -->
+    
+</head>
+
+<body>
+    <header>
+        <div class="logo">
+            <img src="image/logo.png" alt="Logo" />
+        </div>
+
+    </header>
+    <div class="search-box-section">
+        <p class="tagline">CONNECTING THE WORLD</p>
+        <div class="search-container">
+
+            <input type="text" placeholder="请输入检索词">
+
+            <a href="search.html" class="search-button">Search</a>
+            <a href="#" id="advanced-search-link">高级搜索</a>
+
+            
+        </div>
+    </div>
+    <nav class="navbar">
+        <ul class="nav-menu">
+            <li><a href="recommend.html">推荐</a></li>
+            <li><a href="topics.html">专题</a></li>
+            <li><a href="regions.html">地区</a></li>
+            <li><a href="news.html">动态</a></li>
+            <li><a href="experts.html">专家</a></li>
+            <li><a href="about.html">关于</a></li>
+        </ul>
+    </nav>
+    <br>
+    <br>
+    <div class="content-section">
+        <div class="article">
+            <!-- 左边的两个小板块 -->
+            <div class="left-articles">
+                <!-- Article B -->
+                <div class="articleB">
+                    <img src="image/imageB.jpg" alt="Image B">
+                    <div class="article-text">
+                        <a href="https://carnegie-mec.org/2024/02/15/geopolitics-of-economic-development-in-middle-east-pub-91650"
+                            target="_blank">
+                            The Geopolitics of Economic Development in the Middle East
+                        </a>
+                    </div>
+                </div>
+                <!-- Article C -->
+                <div class="articleC">
+                    <img src="image/imageC.jpg" alt="Image C">
+                    <div class="article-text">
+                        <a href="https://www.foreignaffairs.com/united-states/america-cant-surpass-chinas-power-asia"
+                            target="_blank">
+                            America Can’t Surpass China’s Power in Asia
+                        </a>
+                    </div>
+                </div>
+            </div>
+
+            <!-- 右边的大板块 -->
+            <div class="articleA">
+                <img src="image/imageA.jpg" alt="Image A">
+                <div class="article-text">
+                    <a href="https://carnegieendowment.org/2024/01/16/southeast-asians-are-using-china-engagement-to-compel-greater-us-regional-involvement-pub-91386"
+                        target="_blank">
+                        Southeast Asians Are Using China Engagement to Compel Greater U.S. Regional Involvement
+                    </a>
+                </div>
+            </div>
+        </div>
+
+
+        <div class="trending">
+            <h2 class="trending-title">TRENDING</h2>
+            <div class="trending-list">
+                <div class="trending-item">
+                    <span class="trending-number">1</span>
+                    <span class="trending-text">A Crack in a 75-Year-Old Wall of Impunity</span>
+                </div>
+                <div class="trending-item">
+                    <span class="trending-number">2</span>
+                    <span class="trending-text">The Only Solution to the Violence in Yemen and the Red Sea is a
+                        Cease-Fire in Gaza</span>
+                </div>
+                <div class="trending-item">
+                    <span class="trending-number">3</span>
+                    <span class="trending-text">ICJ Ruling on Israel Crimes </span>
+                </div>
+                <div class="trending-item">
+                    <span class="trending-number">4</span>
+                    <span class="trending-text"> The Growing Appeal of Authoritarian Conflict Management</span>
+                </div>
+                <div class="trending-item">
+                    <span class="trending-number">5</span>
+                    <span class="trending-text">THE SOUTHERN NEIGHBORHOOD CONTEXT OF THE EUROPEAN SCIENCE
+                        DIPLOMACY</span>
+                </div>
+                <div class="trending-item">
+                    <span class="trending-number">6</span>
+                    <span class="trending-text">AFFIRMING SUBNATIONAL DIPLOMACY VIA PARIS</span>
+                </div>
+                <div class="trending-item">
+                    <span class="trending-number">7</span>
+                    <span class="trending-text">NON-WESTERN PUBLIC DIPLOMACY IN THE WESTERN BALKANS</span>
+                </div>
+                <div class="trending-item">
+                    <span class="trending-number">8</span>
+                    <span class="trending-text">THE TRANSFORMATION OF SAUDI ARABIA’S PUBLIC DIPLOMACY</span>
+                </div>
+            </div>
+        </div>
+
+    </div>
+    <form id="searchForm">
+        <!-- 基本搜索框 -->
+        <input type="text" id="searchQuery" placeholder="搜索关键字...">
+
+        <!-- 高级搜索选项 -->
+        <div id="advancedSearchOptions">
+            <label for="author">作者：</label>
+            <input type="text" id="author" placeholder="作者">
+
+            <label for="category">分类：</label>
+            <select id="category">
+                <option value="">所有分类</option>
+                <option value="tech">科技</option>
+                <option value="life">生活</option>
+            </select>
+
+            <label for="dateFrom">从日期：</label>
+            <input type="date" id="dateFrom">
+
+            <label for="dateTo">到日期：</label>
+            <input type="date" id="dateTo">
+        </div>
+
+        <button type="submit">搜索</button>
+    </form>
+
+    <!-- 搜索结果展示 -->
+    <div id="results"></div>
+
+    <script>
+        // 提交搜索表单时的处理逻辑
+        document.getElementById('searchForm').addEventListener('submit', function (e) {
+            e.preventDefault(); // 阻止表单默认提交行为
+
+            // 获取表单输入的数据
+            const query = document.getElementById('searchQuery').value;
+            const author = document.getElementById('author').value;
+            const category = document.getElementById('category').value;
+            const dateFrom = document.getElementById('dateFrom').value;
+            const dateTo = document.getElementById('dateTo').value;
+
+            // 向服务器发送GET请求并传递查询参数
+            fetch(`/search?query=${query}&author=${author}&category=${category}&dateFrom=${dateFrom}&dateTo=${dateTo}`)
+                .then(response => response.json()) // 解析服务器返回的JSON数据
+                .then(data => displayResults(data)); // 将结果显示在页面上
+        });
+
+        // 显示搜索结果的函数
+        function displayResults(articles) {
+            const resultsDiv = document.getElementById('results');
+            resultsDiv.innerHTML = ''; // 清空之前的搜索结果
+
+            if (articles.length === 0) {
+                resultsDiv.innerHTML = '没有找到匹配的文章。';
+                return;
+            }
+
+            articles.forEach(article => {
+                const articleDiv = document.createElement('div');
+                articleDiv.innerHTML = `
+                <h3>${article.title}</h3>
+                <p>${article.description}</p>
+                <small>作者: ${article.author} | 日期: ${article.date}</small>
+            `;
+                resultsDiv.appendChild(articleDiv);
+            });
+        }
+    </script>
+
+
+    <div id="results"></div>
+
+ <!-- HTML 部分 -->
+<!-- 新增的文章展示区域 -->
+<div id="homepage-articles">
+    <h2>推荐文章</h2>
+    <div id="homepage-articles-list">
+        <!-- 这里会用 JavaScript 动态加载推荐的文章 -->
+    </div>
+</div>
+
+<!-- JavaScript 部分 -->
+<script>
+    // 加载首页推荐文章的函数
+    function loadHomepageArticles() {
+        fetch('/homepage-articles') // 向服务器请求推荐文章
+            .then(response => response.json()) // 解析服务器返回的 JSON 数据
+            .then(articles => {
+                const listDiv = document.getElementById('homepage-articles-list');
+                listDiv.innerHTML = ''; // 清空之前的文章列表
+
+                if (articles.length === 0) {
+                    listDiv.innerHTML = '没有推荐文章。';
+                    return;
+                }
+
+                articles.forEach(article => {
+                    const articleDiv = document.createElement('div');
+                    articleDiv.innerHTML = `
+                        <h3><a href="${article.link}" target="_blank">${article.title}</a></h3>
+                        <p>${article.description}</p>
+                    `;
+                    listDiv.appendChild(articleDiv);
+                });
+            })
+            .catch(error => {
+                console.error('加载推荐文章时出错:', error);
+            });
+    }
+
+    // 页面加载完成后加载推荐文章
+    document.addEventListener('DOMContentLoaded', loadHomepageArticles);
+</script>
+
+    <!-- 引入 JavaScript 文件 -->
+    <script src="/search.js"></script>
+    
+</body>
+
+</html>

@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>后台管理</title>
+    <style>
+        /* 简单的CSS样式 */
+        body {
+            font-family: Arial, sans-serif;
+        }
+        .container {
+            width: 80%;
+            margin: auto;
+        }
+        .form-group {
+            margin-bottom: 15px;
+        }
+        label {
+            display: block;
+            margin-bottom: 5px;
+        }
+        select, input[type="checkbox"], button {
+            width: 100%;
+            padding: 8px;
+            margin-top: 5px;
+        }
+        button {
+            background-color: #007bff;
+            color: white;
+            border: none;
+            cursor: pointer;
+        }
+        button:hover {
+            background-color: #0056b3;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>后台管理</h1>
+        
+        <!-- 显示文章选择 -->
+        <h2>选择要显示在首页的文章</h2>
+        <form action="/admin/update-homepage" method="POST">
+            <% articles.forEach(article => { %>
+                <div class="form-group">
+                    <label>
+                        <input type="checkbox" name="showOnHomepage" value="<%= article.id %>" <% if (article.showOnHomepage) { %> checked <% } %> />
+                        <%= article.title %>
+                    </label>
+                </div>
+            <% }) %>
+            <button type="submit">更新首页文章</button>
+        </form>
+
+        <h2>标注文章分类</h2>
+        <form action="/admin/assign-category" method="POST">
+            <div class="form-group">
+                <label for="article">选择文章</label>
+                <select name="article_id" id="article">
+                    <% articles.forEach(article => { %>
+                        <option value="<%= article.id %>"><%= article.title %></option>
+                    <% }) %>
+                </select>
+            </div>
+            
+            <div class="form-group">
+                <label for="category">选择分类</label>
+                <select name="category" id="category">
+                    <option value="tech">科技</option>
+                    <option value="life">生活</option>
+                    <!-- 其他分类选项 -->
+                </select>
+            </div>
+
+            <button type="submit">标注分类</button>
+        </form>
+    </div>
+</body>
+</html>

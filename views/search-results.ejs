@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>搜索结果</title>
+    <link rel="stylesheet" href="/styles.css">
+</head>
+<body>
+    <h1>搜索结果</h1>
+    <div id="results">
+        <% if (articles.length === 0) { %>
+            <p>没有找到匹配的文章。</p>
+        <% } else { %>
+            <% articles.forEach(article => { %>
+                <div class="article">
+                    <h3><%= article.title %></h3>
+                    <p><%= article.description %></p>
+                    <small>作者: <%= article.author %> | 日期: <%= article.date %></small>
+                </div>
+            <% }) %>
+        <% } %>
+    </div>
+    <a href="/">返回首页</a>
+</body>
+</html>
