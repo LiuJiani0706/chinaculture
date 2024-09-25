@@ -211,75 +211,47 @@ header {
 }
 
 /* Article 父容器 */
+/* Article 父容器 */
 .article {
-    width: 72%; /* 保持父容器的宽度设定 */
-    display: block; /* 取消flex布局，使用block布局 */
-    width: 100%; /* 占满父容器宽度 */
-    box-sizing: border-box;
-    overflow: hidden; /* 防止浮动导致父容器高度塌陷 */
-}
-
-/* 左右板块设置浮动 */
-.left-articles {
-    width: 45%; /* 左边板块占 45% 的宽度 */
-    float: left; /* 设置左浮动 */
-}
-
-.articleA {
-    width: 52%; /* 右边板块占 52% 的宽度 */
-    float: right; /* 设置右浮动 */
-    margin-left: 3%; /* 左右板块之间的空白 */
-}
-
-/* 左边的两个小板块 */
-.articleB, .articleC {
-    width: 100%; /* 占满左边板块的宽度 */
-    margin-bottom: 10px; /* 两个小板块之间的间距 */
-}
-/* 右边的大板块 */
-.articleA {
-    height: calc(2 * (50% - 5px)); /* 高度是左边板块的两倍 */
-    background-color: #ffffff;
     display: flex;
-    flex-direction: column;
-
+    flex-wrap: wrap; /* 允许换行 */
+    justify-content: space-between; /* 水平分布 */
+    gap: 6px; /* 设置每个文章框之间的间隔为6px */
+    width: 100%; /* 让父容器占满宽度 */
+    
 }
 
-/* 图片样式 */
-.article img {
-    width: 100%;
-    height: auto; /* 图片高度自适应 */
-    object-fit: cover;
+.article-item {
+    width: calc(50% - 3px); /* 每个框占50%宽度减去间隔 */
+    height: 50%; /* 高度占50% */
+    box-sizing: border-box; /* 包含内边距和边框 */
+    overflow: hidden; /* 防止溢出 */
+    position: relative; /* 为绝对定位的子元素提供参考 */
 }
 
-/* 文字框样式 */
+.article-item img {
+    width: 100%; /* 让图片占满整个框 */
+    height: auto; /* 自适应高度 */
+    object-fit: cover; /* 覆盖整个框，保持比例 */
+}
+
 .article-text {
     padding: 10px;
     font-size: 14px;
     font-family: Arial, sans-serif;
 }
 
-/* 超链接样式 */
+/* 链接样式 */
 .article-text a {
     text-decoration: none;
     color: black;
     font-weight: bold;
-    font-size: 14px; /* 字号为14px */
-    font-family: Arial, sans-serif;
 }
 
 /* 链接悬停状态 */
 .article-text a:hover {
     color: blue;
 }
-
-/* 清除浮动 */
-.article::after {
-    content: "";
-    display: table;
-    clear: both;
-}
-
 
 /* Trending 板块 */
 .trending {

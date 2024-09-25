@@ -53,3 +53,65 @@ document.addEventListener('DOMContentLoaded', function () {
         document.querySelector('.search-box-section').innerHTML = advancedSearchHtml;
     });
 });
+// 加载 JSON 数据
+fetch('/data/processedOutput.json') // 确保这个路径是正确的
+    .then(response => response.json())
+    .then(data => {
+        // 遍历每个 article-item
+        document.querySelectorAll('.article-item').forEach(item => {
+            const id = item.getAttribute('data-id'); // 获取 data-id 属性值
+            const articleData = data.find(article => article.id === parseInt(id)); // 查找对应的文章数据
+
+            if (articleData) {
+                // 更新标题和链接
+                const titleElement = item.querySelector('.article-text a');
+                titleElement.textContent = articleData.data.title; // 更新标题
+                titleElement.href = articleData.data.url; // 更新链接
+            }
+        });
+    })
+    .catch(error => console.error('Error loading JSON:', error));
+
+// 加载 JSON 数据
+fetch('/data/processedOutput.json') // 确保这个路径是正确的
+    .then(response => response.json())
+    .then(data => {
+        // 遍历每个 trending-text 元素
+        document.querySelectorAll('.trending-text').forEach(item => {
+            const id = item.getAttribute('data-id'); // 获取 data-id 属性值
+            const articleData = data.find(article => article.id === parseInt(id)); // 查找对应的文章数据
+
+            if (articleData) {
+                // 更新标题和链接
+                item.textContent = articleData.data.title; // 更新标题
+                item.href = articleData.data.url; // 更新链接
+            }
+        });
+    })
+    .catch(error => console.error('Error loading JSON:', error));
+
+
+
+
+
+    document.addEventListener('DOMContentLoaded', function() {
+        // 找到导航栏中的推荐按钮
+        document.querySelector('a[href="recommend.html"]').addEventListener('click', function(event) {
+            event.preventDefault(); // 阻止默认行为（跳转）
+    
+            // 获取 article 区域
+            const articleSection = document.querySelector('.article');
+    
+            if (articleSection) {
+                // 平滑滚动到 article 区域的顶部
+                articleSection.scrollIntoView({
+                    behavior: 'smooth', // 平滑滚动
+                    block: 'start' // 滚动到顶部
+                });
+            }
+        });
+    });
+    
+
+
+

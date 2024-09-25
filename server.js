@@ -19,7 +19,7 @@ app.set('views', path.join(__dirname, 'views'));
 
 // 设置静态文件目录
 app.use(express.static(path.join(__dirname, 'website')));
-
+app.use('/data', express.static(path.join(__dirname, 'data')));
 // 支持解析表单数据（用于处理后台的POST请求）
 app.use(express.urlencoded({ extended: true }));
 

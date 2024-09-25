@@ -47,7 +47,7 @@ module.exports = [
     "date": "2024-05-01",
     "subject": "Subject 5",
     "category": "life",
-    "showOnHomepage": false
+    "showOnHomepage": true
   },
   {
     "id": 6,

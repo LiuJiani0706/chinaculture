@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Article Search</title>
+    <link rel="stylesheet" href="/css/articlesearch.css">
+</head>
+<body>
+    <div class="search-section">
+        <h2>Search Research & Commentary</h2>
+        <form class="search-form" action="/articlesearch" method="get">
+            <input type="text" placeholder="Search by keyword..." class="keyword-input">
+            
+            <select class="category-filter">
+                <option value="">All Categories</option>
+                <option value="Economic">Economic</option>
+                <option value="Foreign Policy">Foreign Policy</option>
+            </select>
+            
+            <label>From:
+                <input type="date" class="start-date">
+            </label>
+            <label>To:
+                <input type="date" class="end-date">
+            </label>
+            
+            <button type="submit" class="search-button">Search</button>
+        </form>
+    </div>
+
+    <div class="article-list">
+        <% articles.forEach(article => { %>
+            <div class="article-card">
+                <h3 class="article-title"><a href="#"><%= article.title %></a></h3>
+                <p class="article-excerpt"><%= article.excerpt %></p>
+                <p class="article-meta">Published on: <span class="article-date"><%= article.date %></span> | Category: <span class="article-category"><%= article.category %></span></p>
+            </div>
+        <% }) %>
+    </div>
+
+    <script src="/js/articlesearch.js"></script>
+</body>
+</html>
