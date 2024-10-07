@@ -1,0 +1,434 @@
+/* Header styling */
+/* Header styling */
+header {
+    display: flex;
+    justify-content: space-between; /* 两边对齐 */
+    align-items: center;
+    background-color: rgba(255, 255, 255, 0.9);
+    padding: 8px 15px; /* 添加内边距 */
+    border-bottom: 1px solid #ddd;
+}
+
+/* Logo styling */
+.logo {
+    width: auto; /* 允许宽度根据内容自动调整 */
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.logo img {
+    height: 60px; /* 可以根据需要调整 */
+    width: auto;
+}
+
+/* 网站名称样式 */
+.site-title {
+    display: flex;
+    flex-direction: column; /* 让标题和副标题纵向排列 */
+    justify-content: center;
+    margin-left:-650px; /* 调整 logo 与标题的间距，使标题靠近 logo */
+}
+
+.site-title h1 {
+    font-size: 25px; /* 主标题字体大小 */
+    margin: 0;
+}
+
+.site-title h2 {
+    font-size: 25px; /* 副标题字体大小 */
+    margin: 0;
+    line-height: 1.2;
+}
+
+
+/* 导航链接样式 */
+.nav-links {
+    display: flex;
+    align-items: center;
+}
+
+.nav-links a {
+    text-decoration: none;
+    color: black; /* 链接的默认颜色 */
+    font-size: 17px; /* 链接的字体大小 */
+    padding: 0 9px; /* 超链接的内边距 */
+    transition: color 0.3s ease; /* 平滑过渡效果 */
+}
+
+/* 鼠标悬停时变红 */
+.nav-links a:hover {
+    color: red; /* 悬停时文字变为红色 */
+}
+
+.nav-links .separator {
+    padding: 0 4px; /* 竖线分隔符左右的间距 */
+    font-size: 16px; /* 竖线分隔符的大小 */
+}
+
+/* 超链接之间的间距 */
+.nav-links a:first-child {
+    margin-right: 8px; /* 调整 "About Us" 与竖线分隔符的间距 */
+}
+
+.nav-links a:last-child {
+    margin-left: 8px; /* 调整竖线分隔符与 "Contact Us" 的间距 */
+}
+
+
+.tooltip {
+    position: relative; /* 使 tooltip-text 相对于链接绝对定位 */
+    text-decoration: none; /* 移除下划线 */
+    color: black; /* 默认颜色 */
+}
+.tooltip-text {
+    display: none; /* 默认不显示 */
+    position: absolute; /* 绝对定位 */
+    top: calc(100% + 5px); /* 在链接下方，并与链接保持5px的间距 */
+    left: 50%; /* 左对齐 */
+    transform: translateX(-50%); /* 水平居中 */
+    background-color: white; /* 提示框背景颜色 */
+    color: black; /* 提示框文字颜色 */
+    padding: 10px; /* 内边距 */
+    border: 1px solid #ccc; /* 边框 */
+    border-radius: 5px; /* 圆角 */
+    z-index: 1; /* 确保在链接之上 */
+    width: 300px; /* 可调宽度 */
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.2); /* 添加阴影效果 */
+    white-space: normal; /* 允许换行 */
+}
+
+.tooltip:hover .tooltip-text {
+    display: block; /* 悬停时显示提示框 */
+}
+
+
+/* 导航栏的基础样式 */
+.navbar {
+    width: 100vw; /* 宽度占满整个视口 */
+    height: 45px; /* 高度为50px */
+    background-color: rgb(240, 179, 179); /* 背景颜色为黑色 */
+    display: flex;
+    justify-content: center; /* 内容水平居中 */
+    align-items: center; /* 内容垂直居中 */
+    margin: 0; /* 移除默认的外边距 */
+}
+
+/* 导航栏内的菜单样式 */
+.nav-menu {
+    list-style: none; /* 移除列表样式 */
+    display: flex;
+    margin: 0;
+    padding: 0;
+}
+
+/* 每个菜单项的间隔为170px */
+.nav-menu li {
+    margin-right: 170px; /* 每个菜单项之间的间隔 */
+}
+
+/* 每个菜单项的链接样式 */
+.nav-menu li a {
+    color: white; /* 文字颜色为白色 */
+    text-decoration: none; /* 移除下划线 */
+    padding: 8px 15px; /* 内边距 */
+    background-color: rgb(240, 179, 179); /* 初始状态下背景颜色为黑色 */
+    display: block; /* 让链接占据整个菜单项 */
+    transition: background-color 0.3s ease; /* 平滑的背景颜色过渡效果 */
+    font-size: 18px; /* 链接的字体大小 */
+}
+
+/* 鼠标悬停时背景变为红色 */
+.nav-menu li a:hover {
+    background-color: red; /* 悬停时背景颜色变为红色 */
+}
+
+
+/* 设置 Philosophy 菜单项的背景颜色始终为红色 */
+.nav-menu li.philosophy a {
+    background-color: red;
+}
+
+/* 移除最后一个菜单项的右边距 */
+.nav-menu li:last-child {
+    margin-right: 0;
+}
+/* Carousel container */
+.carousel {
+    position: relative;
+    max-width: 80%; /* 减少容器宽度以产生左右空白 */
+    height: 400px; /* 高度可根据需要调整 */
+    margin: auto;
+    overflow: hidden;
+    background-color: #f0f0f0; /* 灰色背景填充左右空白 */
+    border-radius: 0px;
+    padding: 0; /* 去除内边距，确保图片贴合容器 */
+}
+
+/* Carousel images wrapper */
+.carousel-images {
+    display: flex;
+    transition: transform 0.5s ease-in-out;
+    width: 100%; /* 容纳图片容器的宽度 */
+    height: 100%; /* 确保容器填满轮播高度 */
+}
+
+/* Carousel image links */
+.carousel-images a {
+    flex: 1 0 100%; /* 每张图片占据100%的父容器宽度 */
+}
+
+/* Images */
+.carousel-images img {
+    width: 100%; /* 图片宽度充满容器 */
+    height: 100%; /* 图片高度填满容器 */
+    object-fit: contain; /* 确保图片完整显示，保持图片比例，防止裁剪 */
+    background-color: #f0f0f0; /* 灰色背景填充图片的空白区域 */
+}
+
+
+/* Controls (left and right arrows) */
+.carousel-controls {
+    position: absolute;
+    top: 50%;
+    width: 100%;
+    display: flex;
+    justify-content: space-between;
+    transform: translateY(-50%);
+}
+
+.carousel-controls .prev, .carousel-controls .next {
+    background-color: rgba(0, 0, 0, 0.5);
+    color: white;
+    font-size: 24px;
+    padding: 10px;
+    cursor: pointer;
+}
+
+/* Dots (indicators) */
+.carousel-indicators {
+    text-align: center;
+    position: absolute;
+    bottom: 10px;
+    width: 100%;
+}
+
+.carousel-indicators .dot {
+    height: 15px;
+    width: 15px;
+    margin: 0 5px;
+    background-color: #bbb;
+    border-radius: 50%;
+    display: inline-block;
+    cursor: pointer;
+}
+
+.carousel-indicators .dot.active {
+    background-color: #717171;
+}
+
+
+
+
+/* 父元素样式 */
+.parent-container {
+    display: flex; /* 使用flex布局 */
+    justify-content: space-between; /* 子元素之间的间距 */
+    margin: 0 60px; /* 左右边缘距离页面4px */
+}
+
+/* 左侧div样式 */
+.left-div {
+    width: 30%; /* 左侧div宽度30% */
+    display: flex;
+    flex-direction: column; /* 垂直排列按钮 */
+    justify-content: space-around; /* 按钮之间均匀间距 */
+    height: 100%; /* 确保高度一致 */
+}
+
+/* 右侧div样式 */
+.right-div {
+    width: 74%; /* 右侧div宽度56% */
+    margin-left: 2%; /* 中间空白4% */
+}
+
+/* 按钮样式 */
+.nav-button {
+    background-color: rgb(242, 201, 201); /* 背景颜色 */
+    color: rgb(241, 236, 236); /* 文字颜色 */
+    font-size: 20px; /* 字体大小 */
+    padding: 10px; /* 内边距 */
+    border: none; /* 去掉边框 */
+    cursor: pointer; /* 鼠标悬停时为手形 */
+    transition: background-color 0.3s ease; /* 平滑过渡效果 */
+    margin-bottom: 10px; /* 每个按钮底部的间距 */
+    text-align: center; /* 字体居中 */
+}
+
+/* 悬停效果 */
+.nav-button:hover {
+    background-color: red; /* 悬停时背景颜色变为红色 */
+}
+
+.text-container {
+    width: 95%; /* 宽度占满父元素 */
+    background-color: rgb(255, 255, 255); /* 背景颜色 */
+    color: rgb(3, 3, 3); /* 字体颜色 */
+    border: 2px solid #ddd; /* 边框 */
+    border-radius: 5px; /* 圆角边框 */
+    padding: 10px; /* 内边距 */
+    height: 170px;
+    box-sizing: border-box; /* 包含内边距和边框在宽度计算中 */
+    margin-left: 30px;
+    font-size: 20px; /* 字体大小 */
+    overflow-y: auto; /* 超出高度时显示垂直滚动条 */
+    max-height: 200px; /* 设置最大高度，超出显示滚动条 */
+    word-wrap: break-word; /* 自动换行 */
+    line-height: 1.5; /* 行距 */
+}
+
+
+.attraction-title {
+    width: 50%; /* 占满父元素的宽度 */
+    align-items: left;     
+    background-color: rgb(240, 179, 179); /* 背景颜色 */
+    color: rgb(245, 245, 245); /* 字体颜色 */
+    border: 2px solid #ddd; /* 边框 */
+    border-radius: 5px; /* 圆角边框 */
+    padding: 3px; /* 内边距 */
+    box-sizing: border-box; /* 包含内边距和边框在宽度计算中 */
+    font-size: 23px; /* 字体大小 */
+    line-height: 1.5; /* 行距 */
+    text-align: left; /* 文字居中 */
+    margin-top: 0px;
+}
+
+/* 主评论区 */
+.comment-section {
+    width: 80%;
+    margin: 20px auto;
+    padding: 20px;
+}
+
+.comment-input {
+    display: flex;
+    gap: 10px;
+}
+
+#comment-box {
+    width: 100%;
+    padding: 10px;
+    border-radius: 5px;
+    border: 2px solid rgb(240, 179, 179);
+    font-size: 16px;
+    background-color: #fff; /* 白色背景 */
+    color: black;
+}
+
+#send-btn {
+    padding: 10px 20px;
+    background-color: white; /* 按钮背景为白色 */
+    color: black;
+    border: 2px solid rgb(240, 179, 179); /* 粉色边框 */
+    border-radius: 5px;
+    cursor: pointer;
+    font-size: 16px;
+}
+
+#send-btn:hover {
+    background-color: #f06292;
+    color: white;
+    border: 2px solid #f06292; /* 改变悬停时的边框 */
+}
+
+#comment-area {
+    margin-top: 20px;
+}
+
+.comment {
+    background-color: white;
+    padding: 15px;
+    margin-bottom: 10px;
+    border-radius: 5px;
+    border: 2px solid rgb(240, 179, 179); /* 粉色边框 */
+}
+
+.comment .comment-author {
+    font-weight: bold;
+    margin-bottom: 5px;
+}
+
+.comment .reply-btn {
+    margin-top: 10px;
+    cursor: pointer;
+    color: white;
+    background-color: rgb(240, 179, 179); /* 粉色按钮 */
+    border: none;
+    padding: 5px 10px;
+    border-radius: 5px;
+    font-size: 14px;
+}
+
+.comment .reply-input {
+    display: none;
+    margin-top: 10px;
+}
+
+.reply-input textarea {
+    width: 90%;
+    padding: 10px;
+    border-radius: 5px;
+    border: 2px solid rgb(240, 179, 179); /* 粉色边框 */
+}
+
+.reply-input button {
+    padding: 5px 10px;
+    margin-left: 10px;
+    background-color: rgb(240, 179, 179); /* 回复按钮粉色背景 */
+    color: white;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+}
+
+.reply-input button:hover {
+    background-color: #e91e63;
+}
+
+
+/* Footer容器样式 */
+.site-footer {
+    display: flex;                /* 使用flexbox布局 */
+    justify-content: space-between; /* 子元素之间有间距 */
+    align-items: center;           /* 垂直方向居中 */
+    background-color: rgb(255, 255, 255); /* 粉红色背景 */
+    color: rgb(3, 3, 3);                  /* 字体颜色为白色 */
+    padding: 20px 30px;            /* 内边距，确保内容不靠近边界 */
+    width: 100%;                   /* 宽度占满页面 */
+    height: 120px;                 /* 固定高度 */
+    box-sizing: border-box;         /* 确保padding包含在宽度内 */
+    border-top: 8px solid rgb(240, 179, 179); /* 添加顶部粉色边框线，粗4px */
+}
+/* Logo样式 */
+.footer-logo img {
+    max-width: 100px;  /* 确保logo图片的大小适应footer */
+    height: auto;      /* 高度自适应 */
+}
+
+/* 网站名称样式 */
+.site-title h1, .site-title h2 {
+    margin: 0;          /* 移除默认外边距 */
+    padding: 0;         /* 移除默认内边距 */
+    font-weight: normal; /* 字体正常加粗 */
+    font-size: 22px; /* 字体大小 */
+}
+
+/* 地址样式 */
+.footer-address {
+    text-align: right;  /* 文字对齐到右边 */
+    font-size: 20px; /* 字体大小 */
+}
+
+.footer-address p {
+    margin: 5px 0;     /* 给段落之间一点间距 */
+}

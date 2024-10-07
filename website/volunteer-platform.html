@@ -1,0 +1,141 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>CCIB 北京大学生志愿者服务系统</title>
+    <style>
+        body {
+            margin: 0;
+            font-family: Arial, sans-serif;
+            position: relative;
+            padding-top: 30px; /* 顶部留出30px的空隙 */
+            overflow-x: hidden;
+            display: flex;
+            flex-direction: column;
+            align-items: center; /* 居中内容 */
+        }
+
+
+        header {
+            position: relative;
+            text-align: center;
+            z-index: 1;
+        }
+
+        h1 {
+            font-size: 24px;
+            margin: 0;
+        }
+
+        h2 {
+            font-size: 22px;
+            margin: 0;
+        }
+
+        .intro-box {
+            width: 80%; /* 共享宽度 */
+            max-height: 200px;
+            overflow-y: auto;
+            padding: 10px;
+            background-color: rgba(255, 255, 255, 0.9);
+            border: 1px solid #ccc;
+            border-radius: 5px;
+            margin: 20px 0;
+            z-index: 1;
+        }
+
+        .button {
+            display: block;
+            width: calc(40% - 40px); /* 宽度40%减去左边的空隙 */
+            margin: 20px 0;
+            padding: 15px;
+            font-size: 20px;
+            font-weight: bold;
+            color: white;
+            background-color: #f0c3da;
+            text-align: center;
+            text-decoration: none;
+            border-radius: 5px;
+            transition: background-color 0.3s;
+            position: absolute; /* 绝对定位 */
+            left: 40px; /* 离左边40px */
+            z-index: 1;
+        }
+
+        .book-button {
+            top: 200px; /* 调整 Book Now! 按钮位置 */
+        }
+
+        .feedbacks-button {
+            top: 300px; /* 调整 Feedbacks 按钮位置 */
+        }
+
+        .book-button:hover,
+        .feedbacks-button:hover {
+            background-color: #f1c3da;
+        }
+
+        .fees-donations {
+            width: 80%; /* 共享宽度 */
+            height: 400px;
+            background-color: #f0f0f0;
+            margin-top: 20px;
+            z-index: 1;
+        }
+
+        .feedbacks {
+            display: none;
+            margin-top: 20px;
+            padding: 20px;
+            background-color: rgba(255, 255, 255, 0.9);
+            border: 3px solid #f1bed7; /* 粉色边框 */
+            border-radius: 10px;
+            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1); /* 添加阴影 */
+            z-index: 1;
+        }
+
+        .feedbacks p {
+            margin: 10px 0;
+            line-height: 1.5; /* 行间距 */
+        }
+    </style>
+</head>
+<body>
+
+    <div class="background"></div> <!-- 背景图片 -->
+
+    <header>
+        <h1>CCIB 北京大学生志愿者服务系统</h1>
+        <h2>Provide you with deeper cultural experience!</h2>
+    </header>
+
+    <div class="intro-box">
+        <p>CCIB北京大学生志愿者组织介绍：</p>
+        <p>我们的志愿者致力于为您提供独特的文化体验和导览服务，帮助您更深入地了解北京的历史和文化。无论是游览著名的景点还是探索隐秘的地方，我们的团队都会竭诚为您服务。</p>
+    </div>
+
+    <a href="excel.html" class="button book-button">Book Now!</a>
+    <div class="button feedbacks-button">Feedbacks【点击查看】</div>
+
+    <div class="fees-donations"></div>
+
+    <div class="feedbacks">
+        <p>来自美国加州的Emma: <br>“哇！简直不可思议！我本来担心在北京会遇到语言问题，结果志愿者完全消除了我的顾虑。他们不仅英语超流利，还带着我去了那些‘隐藏的宝藏’景点，绝对不只是那些典型的旅游点。最棒的是，我们在798艺术区喝了咖啡，感觉像在探索北京的‘潮人世界’！”</p>
+        <p>来自英国伦敦的James: <br>“我以为自己是来看长城的，结果是和一个大学生朋友一起爬长城！这位志愿者对历史了如指掌，不仅让我了解了长城的背后故事，还和我分享了许多中国文化的小细节。这次旅行超越了我的期待，志愿者的专业和热情令人惊叹。”</p>
+        <p>来自法国巴黎的Sophie: <br>“巴黎有很多历史建筑，但北京的文化深度是另一种体验。志愿者非常耐心，用法语为我讲解故宫的每个角落，还帮我找到了一家有名的小吃摊，吃到了正宗的北京烤鸭！这是一场难以忘怀的文化旅程。”</p>
+        <p>来自澳大利亚悉尼的David: <br>“这次旅行简直太酷了！我的志愿者小伙伴带我在胡同里骑车转悠，给我讲了很多历史，还介绍了胡同里的老北京生活。我们甚至还一起去了一家小茶馆，喝了一壶铁观音。那一刻，我感觉自己成了当地人，真正融入了北京。”</p>
+        <p>来自日本东京的Yuki: <br>“作为日本人，很多文化我觉得很亲近，但北京有一种特别的魅力。志愿者用日语带我游览了颐和园，并且细致地解释了每个雕像和建筑背后的寓意。没有这个志愿者，我肯定错过了很多小细节。服务非常周到，我还交了个新朋友！”</p>
+        <p>来自加拿大温哥华的Lily: <br>“我从没想过能在北京遇到这么棒的志愿者。他不仅带我逛了天安门广场，还特别安排了去当地市场的行程，完全超出我的预期！在那里，我买到了独一无二的手工艺品。这种私人定制的感觉真是无可替代！”</p>
+        <p>来自德国柏林的Stefan: <br>“我们去了长城，不是人山人海的那段，而是相对安静的区域。我的志愿者很专业，能用德语讲解每个细节，而且还帮我拍了不少超棒的照片。感觉这次旅程特别独特，充满了个性化的体验。”</p>
+        <p>来自意大利罗马的Giulia: <br>“志愿者带我去了天坛！他的讲解充满激情，仿佛在讲述一个生动的故事。他对中国的古代天文学和建筑的理解太令人佩服了，我学到了很多。在那之后，我们还一起品尝了地道的北京小吃！”</p>
+    </div>
+
+    <script>
+        document.querySelector('.feedbacks-button').onclick = function() {
+            const feedbacks = document.querySelector('.feedbacks');
+            feedbacks.style.display = feedbacks.style.display === 'none' || feedbacks.style.display === '' ? 'block' : 'none';
+        }
+    </script>
+</body>
+</html>

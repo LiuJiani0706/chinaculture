@@ -1,0 +1,202 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>志愿者预约问卷</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f7f7f7;
+            padding: 20px;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            min-height: 100vh;
+        }
+
+        form {
+            background-color: #fff;
+            width: 80%;
+            max-width: 800px;
+            padding: 30px;
+            border-radius: 10px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+            border: 1px solid #e0e0e0;
+        }
+
+        h2 {
+            text-align: center;
+            margin-bottom: 20px;
+            font-size: 24px;
+        }
+
+        label {
+            font-weight: bold;
+            margin-bottom: 5px;
+            display: block;
+        }
+
+        .form-group {
+            margin-bottom: 15px;
+        }
+
+        input[type="text"],
+        input[type="email"],
+        textarea {
+            width: 100%;
+            padding: 10px;
+            margin-top: 5px;
+            border-radius: 5px;
+            border: 1px solid #ccc;
+            font-size: 16px;
+        }
+
+        .checkbox-group {
+            margin-top: 5px;
+        }
+
+        .checkbox-group label {
+            display: block;
+            margin: 5px 0;
+        }
+
+        button {
+            width: 100%;
+            padding: 12px;
+            font-size: 16px;
+            background-color: #4CAF50;
+            color: white;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            margin-top: 20px;
+        }
+
+        button:hover {
+            background-color: #45a049;
+        }
+
+        .success-message {
+            color: green;
+            font-weight: bold;
+            text-align: center;
+            display: none;
+        }
+    </style>
+</head>
+<body>
+
+    <form id="volunteer-form">
+        <h2>志愿者预约问卷</h2>
+        
+        <!-- 1. 日期范围 -->
+        <div class="form-group">
+            <label for="date-range">您计划在北京停留的日期范围是？</label>
+            <input type="text" id="date-range" name="date-range" placeholder="请输入您的日期范围">
+        </div>
+
+        <!-- 2. 服务时间 -->
+        <div class="form-group">
+            <label>您希望志愿者服务的时间是？（可选择多个）</label>
+            <div class="checkbox-group">
+                <label><input type="checkbox" name="service-time" value="上午（9:00-12:00）"> 上午（9:00-12:00）</label>
+                <label><input type="checkbox" name="service-time" value="下午（13:00-17:00）"> 下午（13:00-17:00）</label>
+                <label><input type="checkbox" name="service-time" value="晚上（18:00-21:00）"> 晚上（18:00-21:00）</label>
+                <label><input type="checkbox" name="service-time" value="其他时间"> 其他时间</label>
+            </div>
+        </div>
+
+        <!-- 3. 参观地点 -->
+        <div class="form-group">
+            <label>您计划参观或活动的主要地点有哪些？（可选择多个）</label>
+            <div class="checkbox-group">
+                <label><input type="checkbox" name="visit-places" value="The Confucius Temple"> The Confucius Temple</label>
+                <label><input type="checkbox" name="visit-places" value="The Imperial College"> The Imperial College</label>
+                <label><input type="checkbox" name="visit-places" value="The Baiyun Temple"> The Baiyun Temple</label>
+                <label><input type="checkbox" name="visit-places" value="The Lama Temple"> The Lama Temple</label>
+                <label><input type="checkbox" name="visit-places" value="The Great Wall"> The Great Wall</label>
+                <label><input type="checkbox" name="visit-places" value="Nanluoguxiang"> Nanluoguxiang</label>
+                <label><input type="checkbox" name="visit-places" value="The National Art Museum of China"> The National Art Museum of China</label>
+                <label><input type="checkbox" name="visit-places" value="The Forbidden City"> The Forbidden City</label>
+            </div>
+        </div>
+
+        <!-- 4. 帮助类型 -->
+        <div class="form-group">
+            <label>您希望志愿者提供哪种类型的帮助？（可选择多个）</label>
+            <div class="checkbox-group">
+                <label><input type="checkbox" name="help-type" value="导游讲解"> 导游讲解</label>
+                <label><input type="checkbox" name="help-type" value="语言翻译"> 语言翻译</label>
+                <label><input type="checkbox" name="help-type" value="文化介绍"> 文化介绍</label>
+                <label><input type="checkbox" name="help-type" value="协助购买门票/乘车等"> 协助购买门票/乘车等</label>
+                <label><input type="checkbox" name="help-type" value="其他"> 其他</label>
+            </div>
+        </div>
+
+        <!-- 5. 语言要求 -->
+        <div class="form-group">
+            <label>您对志愿者的语言要求是？</label>
+            <div class="radio-group">
+                <label><input type="radio" name="language" value="英语"> 英语</label>
+                <label><input type="radio" name="language" value="法语"> 法语</label>
+                <label><input type="radio" name="language" value="其他"> 其他</label>
+            </div>
+        </div>
+
+        <!-- 6. 特殊需求 -->
+        <div class="form-group">
+            <label>您是否有特殊需求或偏好？（如行动不便、特殊饮食要求等）</label>
+            <div class="radio-group">
+                <label><input type="radio" name="special-needs" value="无"> 无</label>
+                <label><input type="radio" name="special-needs" value="有"> 有，请说明：<input type="text" name="special-needs-detail" placeholder="请说明">
+                </label>
+            </div>
+        </div>
+
+        <!-- 7. 兴趣领域 -->
+        <div class="form-group">
+            <label>您是否有具体的兴趣领域？（如历史、建筑、美食等）</label>
+            <div class="radio-group">
+                <label><input type="radio" name="interest-field" value="无"> 无</label>
+                <label><input type="radio" name="interest-field" value="有"> 有，请说明：<input type="text" name="interest-field-detail" placeholder="请说明">
+                </label>
+            </div>
+        </div>
+
+        <!-- 9. 技能或背景 -->
+        <div class="form-group">
+            <label>您是否有特别希望志愿者具备的技能或背景？</label>
+            <div class="radio-group">
+                <label><input type="radio" name="skills" value="无"> 无</label>
+                <label><input type="radio" name="skills" value="有"> 有，请说明：<input type="text" name="skills-detail" placeholder="请说明">
+                </label>
+            </div>
+        </div>
+
+        <!-- 10. 联系方式 -->
+        <div class="form-group">
+            <label for="contact">请留下您的联系方式（微信号、邮箱或电话），以便我们与您确认预定。</label>
+            <input type="text" id="contact" name="contact" placeholder="联系方式">
+        </div>
+
+        <!-- 其他期待或建议 -->
+        <div class="form-group">
+            <label for="suggestions">您对此次志愿者服务的其他期待或建议？</label>
+            <textarea id="suggestions" name="suggestions" rows="4" placeholder="请填写您的建议"></textarea>
+        </div>
+
+        <button type="submit">提交</button>
+        <br><br>
+        <div class="success-message" id="success-message">感谢您的反馈。我们将尽快为您安排合适的志愿者，并与您确认服务细节，希望您在北京有一次愉快的旅程！</div>
+    </form>
+
+    <script>
+        document.getElementById('volunteer-form').addEventListener('submit', function(event) {
+            event.preventDefault();
+            document.getElementById('success-message').style.display = 'block';
+            this.reset(); // 提交后重置表单
+        });
+    </script>
+</body>
+</html>
