@@ -1,54 +1,273 @@
 <!DOCTYPE html>
 <html lang="zh-CN">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>CCIB 北京大学生志愿者服务系统</title>
+    <link rel="stylesheet" href="NanluoguLane.css">
+    <script src="scripts.js" defer></script> <!-- 引入 JavaScript 文件 -->
     <style>
+        html,
         body {
             margin: 0;
-            font-family: Arial, sans-serif;
-            position: relative;
-            padding-top: 30px; /* 顶部留出30px的空隙 */
-            overflow-x: hidden;
+            /* 移除默认外边距 */
+            padding: 0;
+            /* 移除默认内边距 */
+            width: 100%;
+            /* 确保宽度为100% */
+            box-sizing: border-box;
+            /* 确保padding包含在宽度内 */
+        }
+
+        .intro-box,
+        .button,
+        .fees-donations,
+        .feedbacks {
+            max-width: 1200px;
+            /* 可根据需要设置最大宽度 */
+            margin: 0 auto;
+            /* 水平居中 */
+        }
+
+        header {
+            display: flex;
+            justify-content: space-between;
+            /* 两边对齐 */
+            align-items: center;
+            background-color: rgba(255, 255, 255, 0.9);
+            padding: 8px 15px;
+            /* 添加内边距 */
+            border-bottom: 1px solid #ddd;
+        }
+
+        /* Logo styling */
+        .logo {
+            width: auto;
+            /* 允许宽度根据内容自动调整 */
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+
+        .logo img {
+            height: 60px;
+            /* 可以根据需要调整 */
+            width: auto;
+        }
+
+        /* 网站名称样式 */
+        .site-title {
             display: flex;
             flex-direction: column;
-            align-items: center; /* 居中内容 */
+            /* 让标题和副标题纵向排列 */
+            justify-content: center;
+            margin-left: -650px;
+            /* 调整 logo 与标题的间距，使标题靠近 logo */
+        }
+
+        .site-title h1 {
+            font-size: 25px;
+            /* 主标题字体大小 */
+            margin: 0;
+        }
+
+        .site-title h2 {
+            font-size: 25px;
+            /* 副标题字体大小 */
+            margin: 0;
+            line-height: 1.2;
         }
 
 
-        header {
+        /* 导航链接样式 */
+        .nav-links {
+            display: flex;
+            align-items: center;
+        }
+
+        .nav-links a {
+            text-decoration: none;
+            color: black;
+            /* 链接的默认颜色 */
+            font-size: 17px;
+            /* 链接的字体大小 */
+            padding: 0 9px;
+            /* 超链接的内边距 */
+            transition: color 0.3s ease;
+            /* 平滑过渡效果 */
+        }
+
+        /* 鼠标悬停时变红 */
+        .nav-links a:hover {
+            color: red;
+            /* 悬停时文字变为红色 */
+        }
+
+        .nav-links .separator {
+            padding: 0 4px;
+            /* 竖线分隔符左右的间距 */
+            font-size: 16px;
+            /* 竖线分隔符的大小 */
+        }
+
+        /* 超链接之间的间距 */
+        .nav-links a:first-child {
+            margin-right: 8px;
+            /* 调整 "About Us" 与竖线分隔符的间距 */
+        }
+
+        .nav-links a:last-child {
+            margin-left: 8px;
+            /* 调整竖线分隔符与 "Contact Us" 的间距 */
+        }
+
+
+        .tooltip {
             position: relative;
-            text-align: center;
+            /* 使 tooltip-text 相对于链接绝对定位 */
+            text-decoration: none;
+            /* 移除下划线 */
+            color: black;
+            /* 默认颜色 */
+        }
+
+        .tooltip-text {
+            display: none;
+            /* 默认不显示 */
+            position: absolute;
+            /* 绝对定位 */
+            top: calc(100% + 5px);
+            /* 在链接下方，并与链接保持5px的间距 */
+            left: 50%;
+            /* 左对齐 */
+            transform: translateX(-50%);
+            /* 水平居中 */
+            background-color: white;
+            /* 提示框背景颜色 */
+            color: black;
+            /* 提示框文字颜色 */
+            padding: 10px;
+            /* 内边距 */
+            border: 1px solid #ccc;
+            /* 边框 */
+            border-radius: 5px;
+            /* 圆角 */
             z-index: 1;
+            /* 确保在链接之上 */
+            width: 300px;
+            /* 可调宽度 */
+            box-shadow: 0 2px 8px rgba(0, 0, 0, 0.2);
+            /* 添加阴影效果 */
+            white-space: normal;
+            /* 允许换行 */
+        }
+
+        .tooltip:hover .tooltip-text {
+            display: block;
+            /* 悬停时显示提示框 */
+        }
+
+
+        /* 导航栏的基础样式 */
+        .navbar {
+            width: 100vw;
+            /* 宽度占满整个视口 */
+            height: 45px;
+            /* 高度为50px */
+            background-color: rgb(240, 179, 179);
+            /* 背景颜色为黑色 */
+            display: flex;
+            justify-content: center;
+            /* 内容水平居中 */
+            align-items: center;
+            /* 内容垂直居中 */
+            margin: 0;
+            /* 移除默认的外边距 */
+        }
+
+        /* 导航栏内的菜单样式 */
+        .nav-menu {
+            list-style: none;
+            /* 移除列表样式 */
+            display: flex;
+            margin: 0;
+            padding: 0;
+        }
+
+        /* 每个菜单项的间隔为170px */
+        .nav-menu li {
+            margin-right: 170px;
+            /* 每个菜单项之间的间隔 */
+        }
+
+        /* 每个菜单项的链接样式 */
+        .nav-menu li a {
+            color: white;
+            /* 文字颜色为白色 */
+            text-decoration: none;
+            /* 移除下划线 */
+            padding: 8px 15px;
+            /* 内边距 */
+            background-color: rgb(240, 179, 179);
+            /* 初始状态下背景颜色为黑色 */
+            display: block;
+            /* 让链接占据整个菜单项 */
+            transition: background-color 0.3s ease;
+            /* 平滑的背景颜色过渡效果 */
+            font-size: 18px;
+            /* 链接的字体大小 */
+        }
+
+        /* 鼠标悬停时背景变为红色 */
+        .nav-menu li a:hover {
+            background-color: red;
+            /* 悬停时背景颜色变为红色 */
+        }
+
+
+        /* 设置 Philosophy 菜单项的背景颜色始终为红色 */
+        .nav-menu li.philosophy a {
+            background-color: red;
+        }
+
+        /* 移除最后一个菜单项的右边距 */
+        .nav-menu li:last-child {
+            margin-right: 0;
         }
 
         h1 {
             font-size: 24px;
             margin: 0;
+            text-align: center;
         }
 
         h2 {
             font-size: 22px;
             margin: 0;
+            text-align: center;
         }
 
         .intro-box {
-            width: 80%; /* 共享宽度 */
+            width: 80%;
+            /* 固定宽度 */
             max-height: 200px;
             overflow-y: auto;
             padding: 10px;
             background-color: rgba(255, 255, 255, 0.9);
-            border: 1px solid #ccc;
+            border: 1px solid pink;
+            /* 设置粉色边框 */
             border-radius: 5px;
-            margin: 20px 0;
-            z-index: 1;
+            margin: 20px auto;
+            /* 上下间距为 20px，左右间距为 auto 实现水平居中 */
         }
 
+
         .button {
-            display: block;
-            width: calc(40% - 40px); /* 宽度40%减去左边的空隙 */
-            margin: 20px 0;
+            display: inline-block;
+            /* 改为 inline-block */
+            width: calc(33.33% - 80px);
+            /* 每个按钮占33.33%的宽度减去间隔 */
             padding: 15px;
             font-size: 20px;
             font-weight: bold;
@@ -58,84 +277,290 @@
             text-decoration: none;
             border-radius: 5px;
             transition: background-color 0.3s;
-            position: absolute; /* 绝对定位 */
-            left: 40px; /* 离左边40px */
-            z-index: 1;
+            margin-right: 10px;
+            /* 给按钮之间留出空隙 */
         }
 
-        .book-button {
-            top: 200px; /* 调整 Book Now! 按钮位置 */
+        .button:last-child {
+            margin-right: 0;
+            margin-left: 10px;
+            /* 去掉最后一个按钮的右侧间隙 */
         }
 
-        .feedbacks-button {
-            top: 300px; /* 调整 Feedbacks 按钮位置 */
-        }
-
-        .book-button:hover,
-        .feedbacks-button:hover {
-            background-color: #f1c3da;
+        .button:hover {
+            background-color: #f2767c;
         }
 
         .fees-donations {
-            width: 80%; /* 共享宽度 */
-            height: 400px;
+            display: none;
+            /* 默认隐藏 */
+            width: 80%;
+            /* 共享宽度 */
+            height: auto;
             background-color: #f0f0f0;
             margin-top: 20px;
+            padding: 20px;
             z-index: 1;
         }
 
         .feedbacks {
-            display: none;
-            margin-top: 20px;
-            padding: 20px;
-            background-color: rgba(255, 255, 255, 0.9);
-            border: 3px solid #f1bed7; /* 粉色边框 */
-            border-radius: 10px;
-            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1); /* 添加阴影 */
-            z-index: 1;
+            display: flex;
+            flex-direction: column;
+            gap: 20px;
+            /* 增加评论之间的间距 */
         }
 
-        .feedbacks p {
-            margin: 10px 0;
-            line-height: 1.5; /* 行间距 */
+        .feedback {
+            display: flex;
+            align-items: flex-start;
+            gap: 20px;
+            /* 图片与文字之间的间距 */
+        }
+
+        .avatar {
+            width: 50px;
+            /* 设置头像宽度 */
+            height: 50px;
+            /* 设置头像高度 */
+            border-radius: 50%;
+            /* 设置头像为圆形 */
+            object-fit: cover;
+            /* 确保图片覆盖整个头像区域 */
+        }
+
+        .feedback p {
+            margin: 0;
+            line-height: 1.5;
+        }
+
+
+        .site-footer {
+            display: flex;
+            /* 使用flexbox布局 */
+            justify-content: space-between;
+            /* 子元素之间有间距 */
+            align-items: center;
+            /* 垂直方向居中 */
+            background-color: rgb(255, 255, 255);
+            /* 粉红色背景 */
+            color: rgb(3, 3, 3);
+            /* 字体颜色为白色 */
+            padding: 20px 30px;
+            /* 内边距，确保内容不靠近边界 */
+            width: 100%;
+            /* 宽度占满页面 */
+            height: 120px;
+            /* 固定高度 */
+            box-sizing: border-box;
+            /* 确保padding包含在宽度内 */
+            border-top: 8px solid rgb(240, 179, 179);
+            /* 添加顶部粉色边框线，粗4px */
+        }
+
+        /* Logo样式 */
+        .footer-logo img {
+            max-width: 100px;
+            /* 确保logo图片的大小适应footer */
+            height: auto;
+            /* 高度自适应 */
+        }
+
+        /* 网站名称样式 */
+        .site-title h1,
+        .site-title h2 {
+            margin: 0;
+            /* 移除默认外边距 */
+            padding: 0;
+            /* 移除默认内边距 */
+            font-weight: normal;
+            /* 字体正常加粗 */
+            font-size: 22px;
+            /* 字体大小 */
+        }
+
+        /* 地址样式 */
+        .footer-address {
+            text-align: right;
+            /* 文字对齐到右边 */
+            font-size: 20px;
+            /* 字体大小 */
+        }
+
+        .footer-address p {
+            margin: 5px 0;
+            /* 给段落之间一点间距 */
         }
     </style>
 </head>
+
 <body>
 
     <div class="background"></div> <!-- 背景图片 -->
-
     <header>
-        <h1>CCIB 北京大学生志愿者服务系统</h1>
-        <h2>Provide you with deeper cultural experience!</h2>
+        <div class="logo">
+            <img src="image/logo.png" alt="Logo" />
+        </div>
+        <div class="site-title">
+            <h1>Chinese Culture</h1>
+            <h2>In Beijing</h2>
+        </div>
+        <nav class="nav-links">
+            <a href="index.html">Home</a>
+            <span class="separator">|</span>
+            <a href="about.html" class="tooltip">About Us
+                <span class="tooltip-text">We are students from the English Department of the China Foreign Affairs
+                    University, driven by a passion for and a sense of responsibility toward sharing Chinese culture
+                    with the world. Through our website, we offer a variety of language services, including translation,
+                    cultural consultation, and personalized volunteer-guided tours. Our goal is to help more people
+                    understand and experience the richness of Chinese traditions and modern developments, building a
+                    bridge for cultural exchange between China and the rest of the world.</span>
+            </a>
+            <span class="separator">|</span>
+            <a href="contact.html" class="tooltip">Contact Us
+                <span class="tooltip-text">If you have any questions about our services or would like to learn more
+                    about Chinese culture, feel free to get in touch with us. We look forward to hearing from you and
+                    providing you with high-quality language and tour guide services.<br>Address: China Foreign Affairs
+                    University, Beijing<br>Zip code: 102206<br>We look forward to your message!</span>
+            </a>
+        </nav>
+
     </header>
 
+    <nav class="navbar">
+        <ul class="nav-menu">
+            <li><a href="Philosophy.html">Philosophy</a></li>
+            <li><a href="Religion.html">Religion</a></li>
+            <li><a href="Arts.html">Arts</a></li>
+            <li><a href="FolkArts.html">Folk Arts</a></li>
+
+        </ul>
+    </nav>
+    <br><br>
+    <div>
+        <h1>CCIB 北京大学生志愿者服务系统</h1>
+        <br>
+        <h2>Provide you with deeper cultural experience!</h2>
+    </div>
+    <br>
     <div class="intro-box">
         <p>CCIB北京大学生志愿者组织介绍：</p>
-        <p>我们的志愿者致力于为您提供独特的文化体验和导览服务，帮助您更深入地了解北京的历史和文化。无论是游览著名的景点还是探索隐秘的地方，我们的团队都会竭诚为您服务。</p>
+        <p>CCIB College Student Volunteer Organisation is committed to helping foreign tourists better understand
+            Beijing. Composed of college students from various universities in Beijing, the organisation provides free
+            online consultation and offline tour guide services. Whether it is planning the itinerary, understanding the
+            local culture, or accompanying the tour on the spot, the Beijing CCIB University Volunteer Organisation
+            wholeheartedly provides all-round help and support for tourists.</p>
     </div>
 
-    <a href="excel.html" class="button book-button">Book Now!</a>
     <div class="button feedbacks-button">Feedbacks【点击查看】</div>
 
-    <div class="fees-donations"></div>
+    <a href="excel.html" class="button book-button">Book Now!</a>
+    <div class="button fees-button">Fees & Donations【点击查看】</div> <!-- 新增按钮 -->
+    <br><br>
 
-    <div class="feedbacks">
-        <p>来自美国加州的Emma: <br>“哇！简直不可思议！我本来担心在北京会遇到语言问题，结果志愿者完全消除了我的顾虑。他们不仅英语超流利，还带着我去了那些‘隐藏的宝藏’景点，绝对不只是那些典型的旅游点。最棒的是，我们在798艺术区喝了咖啡，感觉像在探索北京的‘潮人世界’！”</p>
-        <p>来自英国伦敦的James: <br>“我以为自己是来看长城的，结果是和一个大学生朋友一起爬长城！这位志愿者对历史了如指掌，不仅让我了解了长城的背后故事，还和我分享了许多中国文化的小细节。这次旅行超越了我的期待，志愿者的专业和热情令人惊叹。”</p>
-        <p>来自法国巴黎的Sophie: <br>“巴黎有很多历史建筑，但北京的文化深度是另一种体验。志愿者非常耐心，用法语为我讲解故宫的每个角落，还帮我找到了一家有名的小吃摊，吃到了正宗的北京烤鸭！这是一场难以忘怀的文化旅程。”</p>
-        <p>来自澳大利亚悉尼的David: <br>“这次旅行简直太酷了！我的志愿者小伙伴带我在胡同里骑车转悠，给我讲了很多历史，还介绍了胡同里的老北京生活。我们甚至还一起去了一家小茶馆，喝了一壶铁观音。那一刻，我感觉自己成了当地人，真正融入了北京。”</p>
-        <p>来自日本东京的Yuki: <br>“作为日本人，很多文化我觉得很亲近，但北京有一种特别的魅力。志愿者用日语带我游览了颐和园，并且细致地解释了每个雕像和建筑背后的寓意。没有这个志愿者，我肯定错过了很多小细节。服务非常周到，我还交了个新朋友！”</p>
-        <p>来自加拿大温哥华的Lily: <br>“我从没想过能在北京遇到这么棒的志愿者。他不仅带我逛了天安门广场，还特别安排了去当地市场的行程，完全超出我的预期！在那里，我买到了独一无二的手工艺品。这种私人定制的感觉真是无可替代！”</p>
-        <p>来自德国柏林的Stefan: <br>“我们去了长城，不是人山人海的那段，而是相对安静的区域。我的志愿者很专业，能用德语讲解每个细节，而且还帮我拍了不少超棒的照片。感觉这次旅程特别独特，充满了个性化的体验。”</p>
-        <p>来自意大利罗马的Giulia: <br>“志愿者带我去了天坛！他的讲解充满激情，仿佛在讲述一个生动的故事。他对中国的古代天文学和建筑的理解太令人佩服了，我学到了很多。在那之后，我们还一起品尝了地道的北京小吃！”</p>
+    <div class="fees-donations">
+        <p>Your donation will be used in multiple fields to ensure that the CCIB College Student Volunteer Organisation
+            can provide continuous and high-quality services. Specific uses include:</p>
+        <p>1. Volunteer training and professional skills improvement: It includes courses on tour guide skills,
+            cross-cultural communication ability, first aid knowledge, etc. Part of the donations will be used to hire
+            professional lecturers, and subscribe to online courses.</p>
+        <p>2. Promotion activities: In order to let more foreign tourists know about our services, we will promote the
+            organisation through a variety of channels, including maintaining social media platforms, shooting
+            introduction videos, etc.</p>
+        <p>3. Support for daily operating expenses: Although we are a volunteer organisation, daily operations still
+            need financial support. Donations will be used to cover necessary operating expenses, such as website
+            maintenance, event venue leasing, communication and office equipment procurement. These expenses ensure we
+            can maintain normal operations and provide visitors with a smooth service experience.</p>
+        <p>4. Organisation and planning of cultural exchange activities: We will regularly hold special cultural
+            activities, such as Beijing traditional food experience, calligraphy and tea art experience, historical site
+            tour. These activities not only enrich the travel experience of tourists, but also give volunteers the
+            opportunity to gain an in-depth understanding of their own culture, share and communicate with tourists
+            during the activities.</p>
+        <p>Thank you for your support, with which we can continue to help more foreign tourists discover the unique
+            beauty of Beijing!</p>
     </div>
 
+
+    <div class="feedbacks" style="display: none;">
+        <div class="feedback">
+            <img src="image/tou01.jpg" alt="Emma's Avatar" class="avatar">
+            <p>来自美国加州的Emma:
+                <br>“哇！简直不可思议！我本来担心在北京会遇到语言问题，结果志愿者完全消除了我的顾虑。他们不仅英语超流利，还带着我去了那些‘隐藏的宝藏’景点，绝对不只是那些典型的旅游点。最棒的是，我们在798艺术区喝了咖啡，感觉像在探索北京的‘潮人世界’！”
+            </p>
+        </div>
+        <div class="feedback">
+            <img src="image/tou02.jpg" alt="James's Avatar" class="avatar">
+            <p>来自英国伦敦的James:
+                <br>“我以为自己是来看长城的，结果是和一个大学生朋友一起爬长城！这位志愿者对历史了如指掌，不仅让我了解了长城的背后故事，还和我分享了许多中国文化的小细节。这次旅行超越了我的期待，志愿者的专业和热情令人惊叹。”
+            </p>
+        </div>
+        <div class="feedback">
+            <img src="image/tou03.jpg" alt="Sophie's Avatar" class="avatar">
+            <p>来自法国巴黎的Sophie:
+                <br>“巴黎有很多历史建筑，但北京的文化深度是另一种体验。志愿者非常耐心，用法语为我讲解故宫的每个角落，还帮我找到了一家有名的小吃摊，吃到了正宗的北京烤鸭！这是一场难以忘怀的文化旅程。”
+            </p>
+        </div>
+        <div class="feedback">
+            <img src="image/tou04.jpg" alt="David's Avatar" class="avatar">
+            <p>来自澳大利亚悉尼的David:
+                <br>“这次旅行简直太酷了！我的志愿者小伙伴带我在胡同里骑车转悠，给我讲了很多历史，还介绍了胡同里的老北京生活。我们甚至还一起去了一家小茶馆，喝了一壶铁观音。那一刻，我感觉自己成了当地人，真正融入了北京。”
+            </p>
+        </div>
+        <div class="feedback">
+            <img src="image/tou05.jpg" alt="Yuki's Avatar" class="avatar">
+            <p>来自日本东京的Yuki:
+                <br>“作为日本人，很多文化我觉得很亲近，但北京有一种特别的魅力。志愿者用日语带我游览了颐和园，并且细致地解释了每个雕像和建筑背后的寓意。没有这个志愿者，我肯定错过了很多小细节。服务非常周到，我还交了个新朋友！”
+            </p>
+        </div>
+        <div class="feedback">
+            <img src="image/tou06.jpg" alt="Lily's Avatar" class="avatar">
+            <p>来自加拿大温哥华的Lily:
+                <br>“我从没想过能在北京遇到这么棒的志愿者。他不仅带我逛了天安门广场，还特别安排了去当地市场的行程，完全超出我的预期！在那里，我买到了独一无二的手工艺品。这种私人定制的感觉真是无可替代！”
+            </p>
+        </div>
+        <div class="feedback">
+            <img src="image/tou07.jpg" alt="Stefan's Avatar" class="avatar">
+            <p>来自德国柏林的Stefan:
+                <br>“我们去了长城，不是人山人海的那段，而是相对安静的区域。我的志愿者很专业，能用德语讲解每个细节，而且还帮我拍了不少超棒的照片。感觉这次旅程特别独特，充满了个性化的体验。”
+            </p>
+        </div>
+        <div class="feedback">
+            <img src="image/tou08.jpg" alt="Giulia's Avatar" class="avatar">
+            <p>来自意大利罗马的Giulia:
+                <br>“志愿者带我去了天坛！他的讲解充满激情，仿佛在讲述一个生动的故事。他对中国的古代天文学和建筑的理解太令人佩服了，我学到了很多。在那之后，我们还一起品尝了地道的北京小吃！”
+            </p>
+        </div>
+    </div>
+    <br><br>
+
+
     <script>
-        document.querySelector('.feedbacks-button').onclick = function() {
-            const feedbacks = document.querySelector('.feedbacks');
-            feedbacks.style.display = feedbacks.style.display === 'none' || feedbacks.style.display === '' ? 'block' : 'none';
+        // 点击按钮切换 feedbacks 部分的显示状态
+    document.querySelector('.feedbacks-button').onclick = function () {
+        const feedbacks = document.querySelector('.feedbacks');
+        feedbacks.style.display = feedbacks.style.display === 'none' || feedbacks.style.display === '' ? 'block' : 'none';
+    };
+
+        document.querySelector('.fees-button').onclick = function () {
+            const feesDonations = document.querySelector('.fees-donations');
+            feesDonations.style.display = feesDonations.style.display === 'none' || feesDonations.style.display === '' ? 'block' : 'none';
         }
+
     </script>
+    <footer class="site-footer">
+        <div class="footer-logo">
+            <img src="image/logo.png" alt="Website Logo" class="logo">
+        </div>
+        <div class="site-title">
+            <h1>Chinese Culture</h1>
+            <h2>In Beijing</h2>
+        </div>
+        <div class="footer-address">
+            <p>Address: Changping, Beijing</p>
+            <p>Zip Code:
+                102206&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+            </p>
+        </div>
+    </footer>
 </body>
+
 </html>
